@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CNG Cabinet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .w3-sidebar a {font-family: "Roboto", sans-serif}
+      body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+    </style>
+  </head>
+<body class="w3-content" style="max-width:1200px">
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+    <div class="w3-container w3-display-container w3-padding-16">
+      <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+      <h3 class="w3-wide"><h1>CNG</h1></h3>
+    </div>
+    <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+      <a href="#" class="w3-bar-item w3-button">Cabinet</a>
+      <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+        Door <i class="fa fa-caret-down"></i></a>
+      <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <a href="#" class="w3-bar-item w3-button">Cabinet Door</a>
+        <a href="#" class="w3-bar-item w3-button">Closet Door</a>
+      </div>
+      <a href="#" class="w3-bar-item w3-button">Cutting</a>
+      <a href="#" class="w3-bar-item w3-button">Closet</a>
+    </div>
+    <div>
+      <form>
+        <label for="millimeters">mm:</label>
+        <input type="number" class="w3-bar-item w3-button" id="millimeters" name="millimeters" value=25.40 oninput="convertToInches()">
+        <label for="inches">Inches:</label>
+        <input type="number" class="w3-bar-item w3-button" id="inches" name="inches" value=1 oninput="convertToMillimeters()">
+      </form>
+    </div>
+  </nav>
+  <!-- Top menu on small screens -->
+  <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+    <div class="w3-bar-item w3-padding-24 w3-wide"><a><img src="images/ClosetParts-Logo.png" alt="Logo"></a></div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+  </header>
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:250px">
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+  <!-- Top header -->
+  <header class="w3-container w3-xlarge">
+    <p class="w3-left">Cabinet Door</p>
+  </header>
+  <!-- Product grid -->
+  <div class="w3-row w3-grayscale">
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="images/door.png" style="width:100%" width="300" height="230">
+        <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+        <h2>Doors / Panels</h2>
+      </div>
+  </div>
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <div class="w3-display-container">
+          <img src="images/door-edgeband.jpg" style="width:100%" width="300" height="230">
+            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+        </div>
+        <h2>Door Edgeband</h2>
+      </div>
+    </div>
+  </div>
+
+  <div id="items_options">
+    <table>
+      <tbody>
+      <tr>
+        <td>color: 
+          <select id="mySelectMaterialFinish">
+            <option value="">-- Select One --</option>
+          </select>
+        </td>
+        <td>length: 
+          <input type="number" name="Length_value" class="qty text isDirtyElm" value=""  id="length">
+        </td>
+        <td>height: 
+          <input type="number" name="height_value" class="qty text isDirtyElm" value=""  id="height">
+        </td>
+        <td>Qty: 
+          <input type="number" name="Quantity_value" class="qty text isDirtyElm" value=""  id="quantity">
+        </td>
+        <td>Edge: 
+          <input type="text" name="Edge" class="qty text isDirtyElm" value=""  id="edge">
+        </td>
+      </tr>
+      <tr>
+        <td>hinge: 
+          <input type ="checkbox" name = "hinge" value ="hinge" id = "hinge">
+        </td>
+        <td>miter cut: 
+          <input type ="checkbox" name = "miter_cut" value ="miter_cut" id = "miter_cut" >
+        </td>
+        <td>match grain: 
+          <input type = "checkbox" name = "match_grain" value = "match_grain" id = "match_grain" >
+        </td>
+      </tr>
+      <td>
+        <label>sub-total: </label>
+        <span id="totalPrice" ></span>
+      </td>
+    </tbody>
+    </table>
+  </div>
+  <button onclick="addRow()">add</button>
+
+  <div>
+    <table id="QuoteTable">
+        <thead>
+          <tr>
+            <th>Qty</th>
+            <th>Item</th>
+            <th>Description
+            </th>
+            <th>Rate</th>
+            <th>Sub-Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span id="displayQty"></span</td>
+            <td><span id="id" ></span></td>
+            <td><span id="des" ></span></td>
+            <td><span id = "display_rate"></span></td>
+            <td>1638.35</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <!-- Subscribe section -->
+  <div class="w3-container w3-black w3-padding-32">
+    <h1>Mail Quote to Customer</h1>
+    <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%"></p>
+    <button type="button" class="w3-button w3-red w3-margin-bottom">Send</button>
+    <br>
+    <button type="button" class="w3-button w3-red w3-margin-bottom" onclick="exportToExcel()">Excel</button>
+    <button type="button" class="w3-button w3-red w3-margin-bottom">PDF</button>
+    <button type="button" class="w3-button w3-red w3-margin-bottom">CSV</button>
+  </div>
+</div>
+<script src="test.js"></script>
+<script src="script/exportExcel.js"></script>
+<script src="script/myacc.js"></script>
+<script src="script/add_row.js"></script>
+</body>
+</html>
