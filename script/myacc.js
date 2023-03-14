@@ -33,3 +33,30 @@ function myAccFunc() {
     let millimeters = inches * 25.4;
     document.getElementById("millimeters").value = millimeters.toFixed(2);
   }
+
+  function addItemTo(){
+    let element = document.getElementById("#myItems table");
+    let table = document.querySelector("#items_options table");
+
+    // Clone the first row
+    let newRow = table.cloneNode(true);
+    alert(table);
+    element.appendChild(table)
+  }
+
+  function updateEdgePrice() {
+    let inches = document.getElementById("Edge_quantity").value;
+    let price = inches * 25.4;
+    const totalPriceNumber = Number(price.toFixed(2));
+    edgetotalPrice.textContent = `$${totalPriceNumber} `;
+  }
+
+  function disappearDoor() {
+    let element = document.getElementById("items_options");
+    element.classList.toggle("disappear");
+ }
+
+ function disappearDoorEdgeband() {
+  let element = document.getElementById("doorItems");
+  element.classList.toggle("disappear");
+}
