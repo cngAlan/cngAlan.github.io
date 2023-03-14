@@ -76,55 +76,56 @@
   </div>
 
   <div id="items_options">
-    <table>
+    <table class="w3-table-all">
       <tbody>
       <tr>
         <td>color: 
-          <select id="mySelectMaterialFinish">
+          <select id="mySelectMaterialFinish" class="w3-bar-item w3-button">
             <option value="">-- Select One --</option>
           </select>
         </td>
         <td>length: 
-          <input type="number" name="Length_value" class="qty text isDirtyElm" value=""  id="length">
+          <input type="number" name="Length_value" class="w3-bar-item w3-button" value=""  id="length">
         </td>
         <td>height: 
-          <input type="number" name="height_value" class="qty text isDirtyElm" value=""  id="height">
+          <input type="number" name="height_value" class="w3-bar-item w3-button" value=""  id="height">
         </td>
         <td>Qty: 
-          <input type="number" name="Quantity_value" class="qty text isDirtyElm" value=""  id="quantity">
+          <input type="number" name="Quantity_value" class="w3-bar-item w3-button" value=""  id="quantity">
         </td>
         <td>Edge: 
-          <input type="text" name="Edge" class="qty text isDirtyElm" value=""  id="edge">
+          <select id="displayEdge">
+            <option value="">-- Select One --</option>
+        </select>
         </td>
       </tr>
       <tr>
         <td>hinge: 
-          <input type ="checkbox" name = "hinge" value ="hinge" id = "hinge">
+          <input type ="checkbox" name = "hinge" value ="hinge" id = "hinge" class="w3-bar-item w3-button">
         </td>
         <td>miter cut: 
-          <input type ="checkbox" name = "miter_cut" value ="miter_cut" id = "miter_cut" >
+          <input type ="checkbox" name = "miter_cut" value ="miter_cut" id = "miter_cut" class="w3-bar-item w3-button">
         </td>
         <td>match grain: 
-          <input type = "checkbox" name = "match_grain" value = "match_grain" id = "match_grain" >
+          <input type = "checkbox" name = "match_grain" value = "match_grain" id = "match_grain" class="w3-bar-item w3-button">
         </td>
       </tr>
-      <td>
+      <td class="w3-bar-item w3-button">
         <label>sub-total: </label>
         <span id="totalPrice" ></span>
       </td>
     </tbody>
     </table>
   </div>
-  <button onclick="addRow()">add</button>
+  <button onclick="addRow()" class="w3-button w3-black">add</button>
 
   <div>
-    <table id="QuoteTable">
+    <table id="QuoteTable" class="w3-table w3-striped w3-border">
         <thead>
           <tr>
             <th>Qty</th>
             <th>Item</th>
-            <th>Description
-            </th>
+            <th>Description</th>
             <th>Rate</th>
             <th>Sub-Total</th>
           </tr>
@@ -132,10 +133,10 @@
         <tbody>
           <tr>
             <td><span id="displayQty"></span</td>
-            <td><span id="id" ></span></td>
-            <td><span id="des" ></span></td>
+            <td><span id="id"></span></td>
+            <td><span id="des"></span></td>
             <td><span id = "display_rate"></span></td>
-            <td>1638.35</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
